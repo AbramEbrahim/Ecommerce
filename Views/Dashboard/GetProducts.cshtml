@@ -1,0 +1,57 @@
+﻿ @model IEnumerable<Product>
+@{
+    Layout = "_Layout";
+}
+
+
+
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="table-light">id</td>
+                <td class="table-light">Name</td>
+                <td class="table-light">price</td>
+                <td class="table-light">Image </td>
+                <td class="table-light">Description </td>
+
+                <td class="table-light">Company Name</td>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+            
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>    <img src="~/Images/@item.ImagePath" width="100px" height="100px"></td>
+                    <td>@item.Description</td>
+                    <td>@item.Company.Name</td>
+                    <td>
+
+                        <a asp-action="EditProduct" asp-route-id="@item.Id" class="btn btn-success" role="button">
+                            <span class="material-symbols-outlined">
+                                edit
+                            </span>
+                        </a>
+                        <a asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-danger " role="button">
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </a>
+                    </td>
+            
+                
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    </div>
+ 

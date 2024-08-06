@@ -1,0 +1,81 @@
+﻿@model Ecommerce.ViewModel.ProductViewModel
+
+
+@{
+    Layout = "_Layout";
+}
+
+<form class="row" method="post" asp-action="AddProduct" enctype="multipart/form-data">
+    <input type="text" asp-for="product.Id" class="d-none">
+
+
+    <div class="mb-3">
+        <label asp-for="product.Name" class="form-label">product Name</label>
+        <input type="text"
+               asp-for="product.Name"
+               class="form-control"
+               placeholder="" />
+        <span asp-validation-for="product.Name" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="product.ProductImage" class="form-label">product Image</label>
+        <input asp-for="product.ProductImage"
+               class="form-control"
+               placeholder="" />
+        <span asp-validation-for="product.ProductImage" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3 col-lg-6">
+        <label asp-for="product.Price" class="form-label">product Price</label>
+        <input type="number"
+               asp-for="product.Price"
+               id=""
+               class="form-control"
+               placeholder=""></input>
+        <span asp-validation-for="product.Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 col-lg-6">
+        <label asp-for="product.CompanyId" class="form-label">company</label>
+        <select class="form-select "
+                asp-for="product.CompanyId">
+
+            @{
+                foreach (var item in Model.companies)
+
+                {
+                    <option value="@item.Id">@item.Name</option>
+
+                }
+
+            }
+
+        </select>
+        <span asp-validation-for="product.CompanyId" class="text-danger"></span>
+    </div>
+
+     
+    <div class="mb-3 col-lg-6">
+        <label asp-for="product.Description" class="form-label">product Description</label>
+        <input type="text"
+               asp-for="product.Description"
+               id=""
+               class="form-control"
+               placeholder=""></input>
+        <span asp-validation-for="product.Description" class="text-danger"></span>
+    </div>
+
+
+
+    
+
+
+    <div class="col-lg-12 d-flex justify-content-center  ">
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+</form>
